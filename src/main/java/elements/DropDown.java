@@ -14,7 +14,7 @@ public class DropDown {
     private static final String DROP_DOWN_XPATH =
             "//span[contains(text(), '%s')]/ancestor::div[contains(@class, 'uiInput')]//a";
     private static final String SELECT_OPTION_XPATH =
-            "//*[@class='select-option']/descendant::a[contains(text(),'%s')]";
+            "//*[contains(@class, 'select-option')]/descendant::a[contains(text(),'%s')]";
 
     public DropDown(WebDriver driver, String label) {
         this.driver = driver;
@@ -23,8 +23,9 @@ public class DropDown {
 
     public void selectOption(String option) {
         new WebDriverWait(driver, Duration.ofSeconds(15))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(DROP_DOWN_XPATH))))
-                .getSize();
+                .until(ExpectedConditions
+                        .visibilityOfElementLocated(By.xpath(String.format(DROP_DOWN_XPATH, this.label))))
+                .click();
         driver.findElement(By.xpath(String.format(SELECT_OPTION_XPATH, option))).click();
     }
 }
