@@ -1,5 +1,6 @@
 package elements;
 
+import driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,15 +10,14 @@ import java.time.Duration;
 
 public class DropDown {
 
-    private WebDriver driver;
+    protected WebDriver driver = DriverSingleton.getInstance().getDriver();
     private String label;
     private static final String DROP_DOWN_XPATH =
             "//span[contains(text(), '%s')]/ancestor::div[contains(@class, 'uiInput')]//a";
     private static final String SELECT_OPTION_XPATH =
             "//*[contains(@class, 'select-option')]/descendant::a[contains(text(),'%s')]";
 
-    public DropDown(WebDriver driver, String label) {
-        this.driver = driver;
+    public DropDown(String label) {
         this.label = label;
     }
 

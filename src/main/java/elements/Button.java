@@ -18,7 +18,8 @@ public class Button {
     }
 
     private static final String INPUT_BUTTON_XPATH_BY_ID = "//input[@id='%s']";
-    private static final String BUTTON_XPATH_BY_TITLE = "//button[@title='Save']";
+    private static final String BUTTON_XPATH_BY_TITLE = "//button[@title='%s']";
+    private static final String BUTTON_XPATH_BY_NAME = "//button[@name='%s']";
 
     public void clickInputButtonById() {
         clickButton(INPUT_BUTTON_XPATH_BY_ID, this.xPathSPart);
@@ -26,6 +27,10 @@ public class Button {
 
     public void clickInputButtonByTitle() {
         clickButton(BUTTON_XPATH_BY_TITLE, this.xPathSPart);
+    }
+
+    public void clickInputButtonByName() {
+        clickButton(BUTTON_XPATH_BY_NAME, this.xPathSPart);
     }
 
     private void clickButton(String format, String xPathSPart) {
