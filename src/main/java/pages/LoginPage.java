@@ -1,14 +1,17 @@
 package pages;
 
-import elements.Button;
-import elements.InputField;
+import elements.inputs.LoginInputField;
 import model.User;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
+    @FindBy (xpath = "//input[@id='Login']")
+    private WebElement saveButton;
+
     private static final String LOGIN_ID = "username";
     private static final String PASSWORD_ID = "password";
-    private static final String LOGIN_BUTTON_ID = "Login";
 
     public LoginPage openPage(User user) {
         driver.get(user.getUrl());
@@ -16,15 +19,15 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage fillInLogin(String text) {
-        new InputField(null, LOGIN_ID).writeTextById(text);
+        new LoginInputField(LOGIN_ID).writeTextLogin(text);
         return this;
     }
     public LoginPage fillInPassword(String text) {
-        new InputField(null, PASSWORD_ID).writeTextById(text);
+        new LoginInputField(PASSWORD_ID).writeTextLogin(text);
         return this;
     }
 
     public void clickLogin() {
-        new Button(LOGIN_BUTTON_ID).clickInputButtonById();
+        saveButton.click();
     }
 }

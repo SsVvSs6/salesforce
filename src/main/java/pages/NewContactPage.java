@@ -1,16 +1,17 @@
 package pages;
 
-import elements.Button;
-import elements.DropDown;
-import elements.InputField;
+import elements.dropdowns.NewContactDropDown;
+import elements.inputs.ContactInputField;
 import model.Contact;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class NewContactPage extends BasePage {
 
+    @FindBy (xpath = "//button[@name='SaveEdit']")
+    private WebElement saveButton;
+
     private static final String NEW_CONTACT_URL = "https://tms8.lightning.force.com/lightning/o/Contact/new";
-    private static final String SAVE_BUTTON_XPATH_S_PART = "SaveEdit";
     private static final String LAST_NANE_LABEL = "Last Name";
     private static final String ACCOUNT_NANE_LABEL = "Account Name";
 
@@ -23,17 +24,17 @@ public class NewContactPage extends BasePage {
     }
 
     public NewContactPage fillInLastName(Contact contact) {
-        new InputField(LAST_NANE_LABEL).writeTextByLightningInput(contact.getLastName());
+        new ContactInputField(LAST_NANE_LABEL).writeTextNewContact(contact.getLastName());
         return this;
     }
 
     public NewContactPage fillInAccountName(Contact contact) {
-        new DropDown(ACCOUNT_NANE_LABEL).selectAccountOption(contact.getAccountName());
+        new NewContactDropDown(ACCOUNT_NANE_LABEL).selectNewContactOption(contact.getAccountName());
         return this;
     }
 
     public void clickSave() {
-        new Button(SAVE_BUTTON_XPATH_S_PART).clickInputButtonByName();
+        saveButton.click();
         waitVisibilityOf(randomElement);
     }
 }
