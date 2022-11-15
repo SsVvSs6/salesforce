@@ -1,11 +1,16 @@
 package pages;
 
 import elements.Button;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class NewContactPage extends BasePage {
 
     private static final String NEW_CONTACT_URL = "https://tms8.lightning.force.com/lightning/o/Contact/new";
     private static final String SAVE_BUTTON_XPATH_S_PART = "SaveEdit";
+
+    @FindBy (xpath = "//h1")
+    private WebElement randomElement;
 
     public NewContactPage openNewAccountPage() {
         driver.get(NEW_CONTACT_URL);
@@ -14,5 +19,6 @@ public class NewContactPage extends BasePage {
 
     public void clickSave() {
         new Button(SAVE_BUTTON_XPATH_S_PART).clickInputButtonByName();
+        waitVisibilityOf(randomElement);
     }
 }

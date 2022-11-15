@@ -38,6 +38,9 @@ public class DropDown {
                 .until(ExpectedConditions
                         .visibilityOfElementLocated(By.xpath(String.format(dropDownFormat, this.label))))
                 .click();
-        driver.findElement(By.xpath(String.format(selectFormat, option))).click();
+        new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions
+                        .visibilityOfElementLocated(By.xpath(String.format(selectFormat, option))))
+                .click();
     }
 }
