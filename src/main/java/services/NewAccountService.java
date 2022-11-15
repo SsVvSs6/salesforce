@@ -13,7 +13,7 @@ public class NewAccountService {
         newAccountPage.openNewAccountPage();
         new InputField("Account Name").writeTextByDiv(account.getAccountName());
         new InputField("Website").writeTextByDiv(account.getWebSite());
-        new DropDown("Industry").selectOption(account.getIndustry());
+        new DropDown("Industry").selectIndustryOption(account.getIndustry());
         newAccountPage.clickSave();
     }
 }
