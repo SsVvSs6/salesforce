@@ -16,6 +16,6 @@ public class ContactInputField extends InputField {
     }
 
     public void writeTextNewContact(String text) {
-        writeText(text, INPUT_XPATH_BY_LIGHTNING_INPUT, this.label);
+        writeText(text, String.format(INPUT_XPATH_BY_LIGHTNING_INPUT, this.label));
     }
 }

@@ -16,6 +16,6 @@ public class LoginInputField extends InputField {
     }
 
     public void writeTextLogin(String text) {
-        writeText(text, INPUT_XPATH_BY_ID, this.id);
+        writeText(text, String.format(INPUT_XPATH_BY_ID, this.id));
     }
 }

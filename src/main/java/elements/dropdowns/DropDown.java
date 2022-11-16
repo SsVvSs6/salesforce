@@ -12,14 +12,14 @@ public abstract class DropDown {
 
     protected WebDriver driver = DriverSingleton.getInstance().getDriver();
 
-    protected void selectOption(String option, String dropDownFormat, String dropDownFormatSPart, String selectFormat) {
+    protected void selectOption(String dropDownXPath, String optionXPath) {
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(String.format(dropDownFormat, dropDownFormatSPart))))
+                        .visibilityOfElementLocated(By.xpath(dropDownXPath)))
                 .click();
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(String.format(selectFormat, option))))
+                        .visibilityOfElementLocated(By.xpath(optionXPath)))
                 .click();
     }
 }

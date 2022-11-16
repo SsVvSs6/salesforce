@@ -17,6 +17,6 @@ public class NewAccountDropDown extends DropDown {
     }
 
     public void selectNewAccountOption(String option) {
-        selectOption(option, DROP_DOWN_XPATH, this.label, SELECT_OPTION_XPATH);
+        selectOption(String.format(DROP_DOWN_XPATH, this.label), String.format(SELECT_OPTION_XPATH, option));
     }
 }

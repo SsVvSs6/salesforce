@@ -12,10 +12,10 @@ public abstract class InputField {
 
     protected WebDriver driver = DriverSingleton.getInstance().getDriver();
 
-    protected void writeText(String text, String format, String xPathSPart) {
+    protected void writeText(String text, String xPath) {
         new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath(String.format(format, xPathSPart))))
+                        .visibilityOfElementLocated(By.xpath(xPath)))
                 .sendKeys(text);
     }
 }

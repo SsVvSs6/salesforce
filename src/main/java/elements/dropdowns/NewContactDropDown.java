@@ -13,6 +13,7 @@ public class NewContactDropDown extends DropDown{
     }
 
     public void selectNewContactOption(String option) {
-        selectOption(option, DROP_DOWN_ACCOUNT_XPATH, this.label, SELECT_ACCOUNT_OPTION_XPATH);
+        selectOption(String.format(DROP_DOWN_ACCOUNT_XPATH, this.label),
+                String.format(SELECT_ACCOUNT_OPTION_XPATH, option));
     }
 }
